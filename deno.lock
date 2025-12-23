@@ -1,0 +1,61 @@
+{
+  "version": "5",
+  "remote": {
+    "https://code4fukui.github.io/MessagePack/MessagePack.js": "ee7900d6aca1b9a890c8296325ff03f8ed2f920b6a2e2e4ac3b11c223a31eb3c",
+    "https://code4fukui.github.io/MessagePack/dist.esm/CachedKeyDecoder.mjs": "596898adf2c3061593e3e4b40bca498c2c6b3cf343bdd51fffc6ec76ddaef35c",
+    "https://code4fukui.github.io/MessagePack/dist.esm/DecodeError.mjs": "2f9175116a6d59106a80e66b2a4178291118335c07b7db10281de1c4b987c12a",
+    "https://code4fukui.github.io/MessagePack/dist.esm/Decoder.mjs": "aa1e962f53d3e385eae31ab8895ceca583e9c53dca3f61ca499725b508b2437a",
+    "https://code4fukui.github.io/MessagePack/dist.esm/Encoder.mjs": "92a6ba120543a9f503bf079b12540292b3b50c8a1d00c66125756f82df61a2a9",
+    "https://code4fukui.github.io/MessagePack/dist.esm/ExtData.mjs": "69ac179362f2f19c2d4a1a78fd6655623b5dcd072715c8aef7df92edd8e53427",
+    "https://code4fukui.github.io/MessagePack/dist.esm/ExtensionCodec.mjs": "63e0aec18c3a168b23ff1acfbb50f882db138456ab5739a1f4dfea1784547b99",
+    "https://code4fukui.github.io/MessagePack/dist.esm/decode.mjs": "c6eed74920ecd58c8b0c8c7174939336f2ec10e147ad11edda9984b9d46d553a",
+    "https://code4fukui.github.io/MessagePack/dist.esm/decodeAsync.mjs": "a2c4e3833c5b1d5b796813b597f7b137fcda04af0243616c29ecf28d75739c6b",
+    "https://code4fukui.github.io/MessagePack/dist.esm/encode.mjs": "f7b3aefaccb6b3c3663f1184fcb5f510b56366534b54ee8e06b4f686248557e4",
+    "https://code4fukui.github.io/MessagePack/dist.esm/index.mjs": "ff02984de11d45b86b67dccc4394be98aa786879ba90206bc666c44fc53a8b0a",
+    "https://code4fukui.github.io/MessagePack/dist.esm/timestamp.mjs": "97ff2f72a7702923b8729c653b445f045f3cad29cc43149b27f6a2424a6b75c5",
+    "https://code4fukui.github.io/MessagePack/dist.esm/utils/int.mjs": "30e159cfd1b92c702b211d388c1507a21dc76bafe3fa5bce4c3eb2ecfb853bae",
+    "https://code4fukui.github.io/MessagePack/dist.esm/utils/prettyByte.mjs": "34586c2bbe9bb1996dbd3ffb5deadb20ae570d02a998e9a8ba4c2d6f6119c643",
+    "https://code4fukui.github.io/MessagePack/dist.esm/utils/stream.mjs": "db10dfe9599e02a4dab4fd4e1464b612c8e6f7ae666b55ee083589aa1d209f84",
+    "https://code4fukui.github.io/MessagePack/dist.esm/utils/typedArrays.mjs": "b817b259d25f569f9f9265ec706b4e8b782198082ab187fb5fb94c40df05bab0",
+    "https://code4fukui.github.io/MessagePack/dist.esm/utils/utf8.mjs": "e86d004a276a546ae36c3ec1c5394dc570338b319f5f4aa1138f90fe684d591f"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@istanbuljs/nyc-config-typescript@^1.0.2",
+        "npm:@microsoft/api-extractor@^7.52.5",
+        "npm:@rollup/plugin-node-resolve@^16.0.1",
+        "npm:@rollup/plugin-typescript@^12.1.2",
+        "npm:@types/chai@^4.3.17",
+        "npm:@types/mocha@^10.0.7",
+        "npm:@types/node@^24.2.1",
+        "npm:@types/sinon-chai@^3.2.12",
+        "npm:@types/sinon@^17.0.4",
+        "npm:@typescript-eslint/eslint-plugin@^8.31.1",
+        "npm:@typescript-eslint/parser@^8.31.1",
+        "npm:benchmark@^2.1.4",
+        "npm:chai@^4.4.1",
+        "npm:chalk@^5.3.0",
+        "npm:eslint-config-prettier@^10.1.2",
+        "npm:eslint-plugin-prettier@^5.2.6",
+        "npm:eslint-plugin-tsdoc@0.4",
+        "npm:eslint@^9.33.0",
+        "npm:magic-string@~0.30.11",
+        "npm:mocha@^11.7.1",
+        "npm:node-fetch@^3.3.2",
+        "npm:nyc@^17.1.0",
+        "npm:prettier@^3.5.3",
+        "npm:rollup@^4.40.1",
+        "npm:sinon-chai@^3.7.0",
+        "npm:sinon@21",
+        "npm:source-map-support@~0.5.21",
+        "npm:tar@^7.4.3",
+        "npm:ts-node@^10.9.2",
+        "npm:tsd@0.33",
+        "npm:typescript-cached-transpile@0.0.6",
+        "npm:typescript@^5.8.3",
+        "npm:uuid@^11.1.0"
+      ]
+    }
+  }
+}
