@@ -1,5 +1,7 @@
 # BSON
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 BSON is short for "Binary JSON," and is the binary-encoded serialization of JSON-like documents.
 You can learn more about it in [the specification](http://bsonspec.org).
 

@@ -160,4 +160,19 @@ npm install bson
 **例**
 
 ```js
-const { EJSON } =
+const { EJSON } = require('bson');
+const text = '{ "int32": { "$numberInt": "10" } }';
+
+// prints { int32: { [String: '10'] _bsontype: 'Int32', value: '10' } }
+console.log(EJSON.parse(text, { relaxed: false }));
+
+// prints { int32: 10 }
+console.log(EJSON.parse(text));
+```
+
+<a name="EJSON.stringify"></a>
+
+#### _EJSON_.stringify(value, [replacer], [space], [options])
+
+| パラメータ     | 型                                        | デフォルト           | 説明                                                                                                                                                                                                                                                                                                                                        |
+| -------------- | ------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
