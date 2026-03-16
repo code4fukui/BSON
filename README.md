@@ -34,34 +34,7 @@ console.log(obj);
 - [Documentation](#documentation)
 - [FAQ](#faq)
 
-
-### Release Integrity
-
-Releases are created automatically and signed using the [Node team's GPG key](https://pgp.mongodb.com/node-driver.asc). This applies to the git tag as well as all release packages provided as part of a GitHub release. To verify the provided packages, download the key and import it using gpg:
-
-```shell
-gpg --import node-driver.asc
-```
-
-The GitHub release contains a detached signature file for the NPM package (named
-`bson-X.Y.Z.tgz.sig`).
-
-The following command returns the link npm package. 
-```shell
-npm view bson@vX.Y.Z dist.tarball 
-```
-
-Using the result of the above command, a `curl` command can return the official npm package for the release.
-
-To verify the integrity of the downloaded package, run the following command:
-```shell
-gpg --verify bson-X.Y.Z.tgz.sig bson-X.Y.Z.tgz
-```
-
->[!Note]
-No verification is done when using npm to install the package. The contents of the Github tarball and npm's tarball are identical.
-
-## Bugs / Feature Requests
+### Bugs / Feature Requests
 
 Think you've found a bug? Want to see a new feature in `bson`? Please open a case in our issue management tool, JIRA:
 
@@ -185,3 +158,7 @@ console.log(EJSON.parse(text));
 | value             | <code>object</code>                         |                   | The value to convert to extended JSON                                                                                                                                                                                                                                                                                                              |
 | [replacer]        | <code>function</code> \| <code>array</code> |                   | A function that alters the behavior of the stringification process, or an array of String and Number objects that serve as a whitelist for selecting/filtering the properties of the value object to be included in the JSON string. If this value is null or not provided, all properties of the object are included in the resulting JSON string |
 | [space]           | <code>string</code> \| <code>number</code>  |                   | A String or Number object that's used to insert white space
+
+## License
+
+MIT License — see [LICENSE](LICENSE).

@@ -1,6 +1,6 @@
 # BSON
 
-BSONは "Binary JSON" の略で、JSONライクなドキュメントのバイナリエンコーディングです。 
+BSONは "Binary JSON" の略で、JSONライクなドキュメントのバイナリエンコーディングです。
 詳細は[仕様](http://bsonspec.org)をご覧ください。
 
 ```js
@@ -32,32 +32,7 @@ console.log(obj);
 - [ドキュメンテーション](#ドキュメンテーション)
 - [FAQ](#faq)
 
-### リリースの整合性
-
-リリースは自動的に作成され、[Node チームの GPG キー](https://pgp.mongodb.com/node-driver.asc) を使用してサインされます。 これはGitタグと GitHub リリースの一部として提供されるすべてのリリースパッケージに適用されます。 提供されたパッケージを検証するには、キーをダウンロードしてgpgを使ってインポートします:
-
-```shell
-gpg --import node-driver.asc
-```
-
-GitHub リリースには NPM パッケージ用の detached 署名ファイル (名前は `bson-X.Y.Z.tgz.sig`) が含まれています。
-
-以下のコマンドは NPM パッケージのリンクを返します。
-```shell
-npm view bson@vX.Y.Z dist.tarball 
-```
-
-上記のコマンドの結果を使って、`curl` コマンドでリリース用の公式 npm パッケージを取得できます。
-
-ダウンロードしたパッケージの整合性を検証するには、以下のコマンドを実行します:
-```shell
-gpg --verify bson-X.Y.Z.tgz.sig bson-X.Y.Z.tgz
-```
-
->[!Note]
-> npm でパッケージをインストールする際には検証は行われません。 GitHub tarball と npm の tarball の内容は同一です。
-
-## バグ・機能リクエスト
+### バグ・機能リクエスト
 
 バグを見つけた? 新機能を希望する? 以下の手順でIssueを管理するツール(JIRA)に報告してください:
 
