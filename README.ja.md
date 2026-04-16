@@ -1,5 +1,7 @@
 # BSON
 
+> 英語版のREADMEはこちら: [README.md](README.md)
+
 BSONは "Binary JSON" の略で、JSONライクなドキュメントのバイナリエンコーディングです。
 詳細は[仕様](http://bsonspec.org)をご覧ください。
 
@@ -26,23 +28,25 @@ console.log(obj);
 
 ### 目次
 
-- [使い方](#使い方)
-- [バグ・機能リクエスト](#バグ機能リクエスト)
+- [必要環境](#必要環境)
 - [インストール](#インストール)
+- [使い方](#使い方)
+- [MongoDB Node.jsドライバのバージョン互換性](#mongodb-nodejsドライバのバージョン互換性)
 - [ドキュメンテーション](#ドキュメンテーション)
+- [バグ・機能リクエスト](#バグ機能リクエスト)
 - [FAQ](#faq)
+- [ライセンス](#ライセンス)
 
-### バグ・機能リクエスト
+### 必要環境
+- Node.js >=20.19.0
 
-バグを見つけた? 新機能を希望する? 以下の手順でIssueを管理するツール(JIRA)に報告してください:
+### インストール
 
-1. アカウントを作成してログイン: [jira.mongodb.org](https://jira.mongodb.org)
-2. NODE プロジェクトに移動: [jira.mongodb.org/browse/NODE](https://jira.mongodb.org/browse/NODE) 
-3. 「Create Issue」をクリック - 再現手順など、可能な限り詳細な情報を提供してください。
+```sh
+npm install bson
+```
 
-NODE ドライバのプロジェクトにおけるJIRAのバグレポートは**公開**されます。
-
-## 使い方
+### 使い方
 
 新しいバージョンをビルドするには以下の操作を行います:
 
@@ -51,13 +55,13 @@ npm install
 npm run build
 ```
 
-### Node.jsまたはバンドリング
+#### Node.jsまたはバンドラでの利用
 
-Node.jsやバンドラーを使う場合は、パッケージ名からBSONをインポートできます:
+Node.jsやWebpackのようなバンドラを使う場合は、パッケージ名からBSONをインポートできます:
 
 ```js
 import { BSON, EJSON, ObjectId } from 'bson';
-// or:
+// または:
 // const { BSON, EJSON, ObjectId } = require('bson');
 
 const bytes = BSON.serialize({ _id: new ObjectId() });
@@ -67,9 +71,9 @@ console.log(EJSON.stringify(doc));
 // {"_id":{"$oid":"..."}}
 ```
 
-### ブラウザ
+#### ブラウザでの利用
 
-ブラウザで直接使う場合は `.mjs` バンドルを使ってください:
+バンドラなしでブラウザで直接使う場合は `.mjs` バンドルを使ってください:
 
 ```html
 <script type="module">
@@ -81,12 +85,6 @@ console.log(EJSON.stringify(doc));
   console.log(EJSON.stringify(doc));
   // {"_id":{"$oid":"..."}}
 </script>
-```
-
-## インストール
-
-```sh
-npm install bson
 ```
 
 ### MongoDB Node.jsドライバのバージョン互換性
@@ -101,34 +99,30 @@ npm install bson
 | `mongodb@4.x` | N/A        | ✓          | N/A        | N/A        | N/A        |
 | `mongodb@3.x` | ✓          | N/A        | N/A        | N/A        | N/A        |
 
-## ドキュメンテーション
+### ドキュメンテーション
 
-### BSON
+#### BSON
 [APIドキュメンテーション](https://mongodb.github.io/node-mongodb-native/Next/modules/BSON.html)
 
 <a name="EJSON"></a>
 
-### EJSON
+#### EJSON
 
 - [EJSON](#EJSON)
-
   - [.parse(text, [options])](#EJSON.parse)
-
   - [.stringify(value, [replacer], [space], [options])](#EJSON.stringify)
-
   - [.serialize(bson, [options])](#EJSON.serialize)
-
   - [.deserialize(ejson, [options])](#EJSON.deserialize)
 
 <a name="EJSON.parse"></a>
 
-#### _EJSON_.parse(text, [options])
+##### _EJSON_.parse(text, [options])
 
-| パラメータ     | 型                   | デフォルト        | 説明                                                                        |
-| -------------- | -------------------- | ----------------- | ------------------------------------------------------------------------- |
-| text           | <code>string</code>  |                   |                                                                            |
-| [options]      | <code>object</code>  |                   | オプション設定                                                            |
-| [options.relaxed] | <code>boolean</code> | <code>true</code> | 可能な限り、BSONタイプではなく、ネイティブのJSタイプを返す (trueの場合) |
+| パラメータ        | 型                   | デフォルト        | 説明                                                                       |
+| ----------------- | -------------------- | ----------------- | -------------------------------------------------------------------------- |
+| text              | `string`             |                   | パースする拡張JSON文字列。                                                 |
+| [options]         | `object`             |                   | オプション設定。                                                           |
+| [options.relaxed] | `boolean`            | `true`            | `true`の場合、可能な限りBSON型ではなくネイティブのJavaScript型を返します。 |
 
 拡張JSONの文字列をパースし、その文字列によって記述されるJavaScriptの値またはオブジェクトを構築します。
 
@@ -138,16 +132,5 @@ npm install bson
 const { EJSON } = require('bson');
 const text = '{ "int32": { "$numberInt": "10" } }';
 
-// prints { int32: { [String: '10'] _bsontype: 'Int32', value: '10' } }
-console.log(EJSON.parse(text, { relaxed: false }));
-
-// prints { int32: 10 }
-console.log(EJSON.parse(text));
-```
-
-<a name="EJSON.stringify"></a>
-
-#### _EJSON_.stringify(value, [replacer], [space], [options])
-
-| パラメータ     | 型                                        | デフォルト           | 説明                                                                                                                                                                                                                                                                                                                                        |
-| -------------- | ------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// { int32: { [String: '10'] _bsontype: 'Int32', value: '10' } } と出力されます
+console.log(

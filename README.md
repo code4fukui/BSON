@@ -2,8 +2,7 @@
 
 > 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-BSON is short for "Binary JSON," and is the binary-encoded serialization of JSON-like documents.
-You can learn more about it in [the specification](http://bsonspec.org).
+BSON is short for "Binary JSON," and is the binary-encoded serialization of JSON-like documents. You can learn more about it in [the specification](http://bsonspec.org).
 
 ```js
 import { BSON } from "https://code4fukui.github.io/BSON/BSON.js";
@@ -28,30 +27,21 @@ console.log(obj);
 
 ### Table of Contents
 
-- [Usage](#usage)
-- [Bugs/Feature Requests](#bugs--feature-requests)
 - [Installation](#installation)
+- [Usage](#usage)
+- [MongoDB Node.js Driver Version Compatibility](#mongodb-nodejs-driver-version-compatibility)
 - [Documentation](#documentation)
-- [FAQ](#faq)
+- [Bugs/Feature Requests](#bugs--feature-requests)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Bugs / Feature Requests
+## Installation
 
-Think you've found a bug? Want to see a new feature in `bson`? Please open a case in our issue management tool, JIRA:
-
-1. Create an account and login: [jira.mongodb.org](https://jira.mongodb.org)
-2. Navigate to the NODE project: [jira.mongodb.org/browse/NODE](https://jira.mongodb.org/browse/NODE)
-3. Click **Create Issue** - Please provide as much information as possible about the issue and how to reproduce it.
-
-Bug reports in JIRA for the NODE driver project are **public**.
+```sh
+npm install bson
+```
 
 ## Usage
-
-To build a new version perform the following operations:
-
-```
-npm install
-npm run build
-```
 
 ### Node.js or Bundling Usage
 
@@ -85,13 +75,21 @@ If you are working directly in the browser without a bundler please use the `.mj
 </script>
 ```
 
-## Installation
+### Webpack Usage
 
-```sh
-npm install bson
+To use BSON with webpack, you need to add a fallback for the `crypto` module in your webpack configuration:
+
+```js
+// webpack.config.js
+module.exports = {
+  // ... other configurations
+  resolve: {
+    fallback: { crypto: false }
+  }
+};
 ```
 
-### MongoDB Node.js Driver Version Compatibility
+## MongoDB Node.js Driver Version Compatibility
 
 Only the following version combinations with the [MongoDB Node.js Driver](https://github.com/mongodb/node-mongodb-native) are considered stable.
 
@@ -114,13 +112,9 @@ Only the following version combinations with the [MongoDB Node.js Driver](https:
 ### EJSON
 
 - [EJSON](#EJSON)
-
   - [.parse(text, [options])](#EJSON.parse)
-
   - [.stringify(value, [replacer], [space], [options])](#EJSON.stringify)
-
   - [.serialize(bson, [options])](#EJSON.serialize)
-
   - [.deserialize(ejson, [options])](#EJSON.deserialize)
 
 <a name="EJSON.parse"></a>
@@ -129,12 +123,11 @@ Only the following version combinations with the [MongoDB Node.js Driver](https:
 
 | Param             | Type                 | Default           | Description                                                                        |
 | ----------------- | -------------------- | ----------------- | ---------------------------------------------------------------------------------- |
-| text              | <code>string</code>  |                   |                                                                                    |
-| [options]         | <code>object</code>  |                   | Optional settings                                                                  |
-| [options.relaxed] | <code>boolean</code> | <code>true</code> | Attempt to return native JS types where possible, rather than BSON types (if true) |
+| text              | `string`             |                   |                                                                                    |
+| [options]         | `object`             |                   | Optional settings                                                                  |
+| [options.relaxed] | `boolean`            | `true`            | Attempt to return native JS types where possible, rather than BSON types (if true) |
 
-Parse an Extended JSON string, constructing the JavaScript value or object described by that
-string.
+Parse an Extended JSON string, constructing the JavaScript value or object described by that string.
 
 **Example**
 
@@ -153,12 +146,64 @@ console.log(EJSON.parse(text));
 
 #### _EJSON_.stringify(value, [replacer], [space], [options])
 
-| Param             | Type                                        | Default           | Description                                                                                                                                                                                                                                                                                                                                        |
-| ----------------- | ------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| value             | <code>object</code>                         |                   | The value to convert to extended JSON                                                                                                                                                                                                                                                                                                              |
-| [replacer]        | <code>function</code> \| <code>array</code> |                   | A function that alters the behavior of the stringification process, or an array of String and Number objects that serve as a whitelist for selecting/filtering the properties of the value object to be included in the JSON string. If this value is null or not provided, all properties of the object are included in the resulting JSON string |
-| [space]           | <code>string</code> \| <code>number</code>  |                   | A String or Number object that's used to insert white space
+| Param      | Type                                        | Default | Description                                                                                                                                                                                                                                                                                                                                        |
+| ---------- | ------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| value      | `object`                                    |         | The value to convert to extended JSON                                                                                                                                                                                                                                                                                                              |
+| [replacer] | `function` \| `array`                       |         | A function that alters the behavior of the stringification process, or an array of String and Number objects that serve as a whitelist for selecting/filtering the properties of the value object to be included in the JSON string. If this value is null or not provided, all properties of the object are included in the resulting JSON string |
+| [space]    | `string` \| `number`                        |         | A String or Number object that's used to insert white space into the output JSON string for readability purposes.                                                                                                                                                                                                                                  |
+
+## Bugs / Feature Requests
+
+Think you've found a bug? Want to see a new feature in `bson`? Please open a case in our issue management tool, JIRA:
+
+1. Create an account and login: [jira.mongodb.org](https://jira.mongodb.org)
+2. Navigate to the NODE project: [jira.mongodb.org/browse/NODE](https://jira.mongodb.org/browse/NODE)
+3. Click **Create Issue** - Please provide as much information as possible about the issue and how to reproduce it.
+
+Bug reports in JIRA for the NODE driver project are **public**.
+
+## Contributing
+
+### Building
+
+To build a new version, perform the following operations:
+
+```bash
+npm install
+npm run build
+```
+
+### Testing and Linting
+
+To run the test suite:
+
+```bash
+npm test
+```
+
+You can also run tests for Node.js and web environments separately:
+
+```bash
+npm run check:node
+npm run check:web
+```
+
+To check for linting issues:
+
+```bash
+npm run check:lint
+```
+
+To automatically fix formatting issues:
+
+```bash
+npm run format
+```
+
+### Benchmarks
+
+This project includes a benchmark suite. For instructions on how to write and run your own benchmarks, please see the [custom benchmarks README](./test/bench/custom/readme.md).
 
 ## License
 
-MIT License — see [LICENSE](LICENSE).
+Apache-2.0 License — see [LICENSE](LICENSE).
