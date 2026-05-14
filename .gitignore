@@ -37,3 +37,6 @@ customBenchmarkResults.json
 
 expansion.yml
 .drivers-tools/
+
+# meta-ops cleanup
+Thumbs.db
